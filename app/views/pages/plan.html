@@ -1,11 +1,17 @@
 <div ng-controller='PlanCtrl'>
 <h3>This is the plan</h3>
- <ul ui:sortable ng:model="stories">
-        <li ng:repeat="story in stories" style="background: white;">
-        	<div>
-        		<span>{{story.id}}</span>
-        		<span>{{story.title}}</span>
-        	</div>
-        </li>
+ <table ng:model="stories">
+	<thead>	
+		<tr>
+			<th>Id</th>
+			<th>Title</th>
+		</tr>
+	</thead>
+	<tbody ui:sortable>
+	    <tr ng:repeat="story in stories" style="background: white;">
+	    	<td><span>{{story.id}}</span></td>
+	    	<td><span>{{story.title}}</span></td>
+	    </tr>
+	</tbody>
  </ul>
 </div>
