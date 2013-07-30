@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('aperyApp', ['ui.bootstrap','angular-underscore', 'ui.state'])
-  .config(function ($routeProvider, $stateProvider) {
+angular.module('aperyApp', ['ui', 'ui.bootstrap','angular-underscore', 'ui.state', 'restangular'])
+  .config(function ($routeProvider, $stateProvider, RestangularProvider) {
     
+	RestangularProvider.setBaseUrl("/api/v1");
+	  
     $stateProvider.state('page',{
     	url: '/p/:pageId',
     	templateUrl: function(params) {

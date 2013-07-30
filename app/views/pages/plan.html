@@ -1,1 +1,11 @@
-This is the plan
+<div ng-controller='PlanCtrl'>
+<h3>This is the plan</h3>
+ <ul ui:sortable ng:model="stories">
+        <li ng:repeat="story in stories" style="background: white;">
+        	<div>
+        		<span>{{story.id}}</span>
+        		<span>{{story.title}}</span>
+        	</div>
+        </li>
+ </ul>
+</div>

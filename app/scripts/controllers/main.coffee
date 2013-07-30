@@ -1,6 +1,6 @@
 app = angular.module 'aperyApp'
 
-app.controller 'MainCtrl', ($scope, $routeParams, $location, $state) ->
+app.controller 'MainCtrl', ($scope, $location) ->
 	$scope.tabs = [
 		{ title:"Plan", id:"plan" },
 		{ title:"Backlog", id:"backlog", disabled: true}
@@ -11,10 +11,9 @@ app.controller 'MainCtrl', ($scope, $routeParams, $location, $state) ->
 		tab = _.find $scope.tabs, (tab) -> return tab.active
 		return tab
 	$scope.$on 'pageId', (event, pageId) ->
-		$scope.$apply ($scope) ->
-			_each $scope.tabs, (tab) -> tab.active = false
-			tab = _.find $scope.tabs, (tab) -> return tab.pageId is pageId
-			tab.active = true
+		_each $scope.tabs, (tab) -> tab.active = false
+		tab = _.find $scope.tabs, (tab) -> return tab.pageId is pageId
+		tab.active = true
 			
 		
 	#$scope.currentTab = $routeParams.tabId #+ to parse to int
