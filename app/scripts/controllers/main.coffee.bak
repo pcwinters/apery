@@ -1,0 +1,33 @@
+alert "test"
+app = angular.module('aperyApp')
+
+
+app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
+	$locationProvider.html5Mode(true);
+	$routeProvider.when("/", {
+        templateUrl: 'tabs.html'
+      })
+      .otherwise({
+        redirectTo: "/p/plan"
+      })
+]
+
+app.controller 'MainCtrl', ($scope, $location) ->
+	
+	$scope.tabs = [
+		{ title:"Plan", id:"plan" },
+		{ title:"Backlog", id:"backlog"}
+	]
+	$scope.location = $location
+
+app.controller 'MainTabsCtrl', ($scope, $routeParams, $location) ->
+	
+	#Each time controller is recreated, check tab in url
+	$scope.currentTab = $routeParams.tabId #+ to parse to int
+
+	$scope.$watch 'currentTab', (id, oldId) ->
+		if id is not oldId
+			$location.path '/p/'+id
+    
+ 
+	
