@@ -11,9 +11,9 @@ app.controller 'MainCtrl', ($scope, $location) ->
 		tab = _.find $scope.tabs, (tab) -> return tab.active
 		return tab
 	$scope.$on 'pageId', (event, pageId) ->
-		_each $scope.tabs, (tab) -> tab.active = false
-		tab = _.find $scope.tabs, (tab) -> return tab.pageId is pageId
-		tab.active = true
+		_.each $scope.tabs, (tab) -> tab.active = false
+		tab = _.find $scope.tabs, (tab) -> return tab.id is pageId
+		if tab? then tab.active = true
 			
 		
 	#$scope.currentTab = $routeParams.tabId #+ to parse to int
