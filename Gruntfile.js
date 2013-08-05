@@ -58,7 +58,21 @@ module.exports = function (grunt) {
       },
       proxies: [
         {
-            context: '/model',
+            context: '/project/',
+            host: 'localhost',
+            port: 3000,
+            https: false,
+            changeOrigin: false
+        },
+        {
+            context: '/channel/test',
+            host: 'localhost',
+            port: 3000,
+            https: false,
+            changeOrigin: false
+        },
+        {
+            context: '/channel/bind',
             host: 'localhost',
             port: 3000,
             https: false,

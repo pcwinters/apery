@@ -1,5 +1,7 @@
 <div ng-controller='PlanCtrl'>
 <h3>This is the plan</h3>
+ <div ng-click="add()">Add new</div>
+ <div ng-click="refresh()">refresh</div>
  <table ng:model="stories">
 	<thead>	
 		<tr>
@@ -8,9 +10,9 @@
 		</tr>
 	</thead>
 	<tbody ui:sortable>
-	    <tr ng:repeat="story in stories" class="story">
-	    	<td><span>{{story.id}}</span></td>
-	    	<td><span class="title" inline-edit="story.title"/></td>
+	    <tr ng:repeat="story in stories() | reverse" class="story">
+	    	<td><span>{{story.get('number')}}</span></td>
+	    	<td><span class="title" inline-edit="story.at('title')" /></td>
 	    </tr>
 	</tbody>
  </ul>

@@ -1,4 +1,4 @@
 <div class="inline-edit">
-  <input class="editor" type="text" on-enter="save()" on-esc="cancel()" ng-model="model" ng-show="editMode" blur="save()">
-  <span class="display" ng-hide="editMode" ng-click="edit()">{{model}}</span>
+  <input class="editor" type="text" on-enter="save()" on-esc="cancel()" ng-model="value" ng-show="editMode" blur="save()" />
+  <span class="display" ng-hide="editMode" ng-click="edit()">{{value}}</span>
 </div>
