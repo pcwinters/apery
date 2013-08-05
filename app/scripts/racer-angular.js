@@ -1,6 +1,5 @@
 var module = angular.module('racer', [], function ($provide) {
 	var setImmediate = window && window.setImmediate ? window.setImmediate : function (fn) {
-		debugger
 		setTimeout(fn, 0);
 	};
 	
