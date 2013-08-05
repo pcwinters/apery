@@ -32,34 +32,22 @@ editors.directive 'inlineEdit', ($timeout, uuid4) ->
 	    }
 		link: (scope, elm, attr) ->
 			uuid = uuid4.generate()
+			
 			scope.model = scope.model() # it should be an expression like something.at('path')
-			scope.value = scope.model.get()
-			
 			input = elm.find('input')[0]
-			previous = scope.value
-			pause = false
-			scope.$watch 'value', (newValue, oldValue) ->
-				if newValue isnt oldValue
-					if not pause 
-						applyChange scope.model, oldValue, newValue
-					pause = false					
-#					op = () ->
-#						debugger
-#					setTimeout(op, 0);
-					
 			
-			scope.model.on 'change', () ->
-				debugger
-				passed = arguments[arguments.length-1]
-				if passed.source is uuid
-					debugger
-					return
+			scope.value = scope.model.get()
+			scope.$watch 'value', (newValue, oldValue) ->
+				if newValue isnt oldValue and newValue isnt scope.model.get()
+					applyChange scope.model, oldValue, newValue
+					
+			scope.model.on 'all', () ->
 				if scope.value isnt scope.model.get()
-					pause = true
 					scope.value = scope.model.get()
-#				op = () ->
-#					debugger
-#				setTimeout(op, 0);
+
+#				passed = arguments[arguments.length-1]
+#				if passed.source is uuid
+#					return
 					
 			
 			applyChange = (model, previous, value) ->

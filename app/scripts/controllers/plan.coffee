@@ -18,7 +18,7 @@ app.controller 'PlanCtrl', ($scope, StoryService, racer, $timeout) ->
 		mapModel = (arrayModel) ->
 			
 			mapItems = () -> 
-				return if arrayModel?.get()? then _.map arrayModel.get(), (s, i) -> arrayModel.at("#{i}") else []
+				return if arrayModel?.get()? then _.map arrayModel.get(), (s, i) -> arrayModel.at(i) else []
 			items = mapItems()
 			
 			arrayModel.on 'all', () ->
